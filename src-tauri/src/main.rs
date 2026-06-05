@@ -2,5 +2,5 @@
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 
 fn main() {
-    classroom_seating_manager_lib::run();
+    classdeck_lib::run();
 }

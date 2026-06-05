@@ -240,7 +240,7 @@ export default function SeatingGrid({ courseId }: SeatingGridProps) {
       onDragEnd={onDragEnd}
       onDragCancel={handleDragCancel}
     >
-      <div className="flex h-full gap-6">
+      <div className="flex h-full gap-4 lg:gap-6">
         {/* ── Left: Grid area ─────────────────────────────────────────── */}
         <div className="flex-1">
           {/* Error banner */}
@@ -282,10 +282,10 @@ export default function SeatingGrid({ courseId }: SeatingGridProps) {
 
           {/* Grid */}
           <div
-            className="grid gap-2"
+            className="grid gap-1 sm:gap-2"
             style={{
-              gridTemplateColumns: `repeat(${cols}, minmax(72px, 1fr))`,
-              gridTemplateRows: `repeat(${rows}, minmax(72px, auto))`,
+              gridTemplateColumns: `repeat(${cols}, minmax(60px, 1fr))`,
+              gridTemplateRows: `repeat(${rows}, minmax(60px, auto))`,
             }}
           >
             {gridCells}
@@ -293,7 +293,7 @@ export default function SeatingGrid({ courseId }: SeatingGridProps) {
         </div>
 
         {/* ── Right: Unplaced student palette (draggable) ──────────────── */}
-        <div className="w-56 shrink-0 flex flex-col gap-2">
+        <div className="w-48 shrink-0 flex flex-col gap-2 lg:w-56">
           <RosterDropArea>
             <div className="border-b border-gray-200 px-3 py-2">
               <h3 className="text-xs font-semibold uppercase tracking-wider text-gray-500">

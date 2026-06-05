@@ -347,7 +347,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "classroom-seating-manager"
+name = "classdeck"
 version = "0.1.0"
 dependencies = [
  "base64 0.22.1",

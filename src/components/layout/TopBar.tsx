@@ -20,9 +20,9 @@ export default function TopBar() {
   }, [loadSyncStatus]);
 
   return (
-    <header className="flex h-14 items-center justify-between border-b border-gray-200 bg-white px-6 dark:border-gray-700 dark:bg-gray-900">
-      <h1 className="text-lg font-semibold text-gray-800 dark:text-gray-100">
-        Classroom Seating Manager
+    <header className="flex h-14 items-center justify-between border-b border-gray-200 bg-white px-4 sm:px-6 dark:border-gray-700 dark:bg-gray-900">
+      <h1 className="truncate text-base font-semibold sm:text-lg text-gray-800 dark:text-gray-100">
+        ClassDeck
       </h1>
 
       <div className="flex items-center gap-4">

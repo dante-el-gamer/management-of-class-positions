@@ -47,7 +47,7 @@ You can expect:
 
 ## Scope
 
-This policy covers the `classroom-seating-manager` repository — both the Tauri/Rust backend (`src-tauri/`) and the React/TypeScript frontend (`src/`).
+This policy covers the `classdeck` repository — both the Tauri/Rust backend (`src-tauri/`) and the React/TypeScript frontend (`src/`).
 
 Out of scope:
 

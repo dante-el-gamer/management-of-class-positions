@@ -2,7 +2,7 @@
 schema: spec-driven
 
 context: |
-  Project: gestion-puestos-clases (classroom seating manager)
+  Project: ClassDeck
   Description: Desktop app to visually manage classroom seating arrangements.
   Tech stack: Tauri 2 + React 18 + TypeScript + Vite 5 + TailwindCSS 3 + Zustand 4
   Architecture: Layered — React components + Zustand stores + Tauri commands + Rust backend (rusqlite)

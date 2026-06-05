@@ -22,9 +22,9 @@ export default function Sidebar({ position }: SidebarProps) {
   }
 
   return (
-    <aside className="flex w-72 flex-col border-r border-gray-200 bg-white dark:border-gray-700 dark:bg-gray-900">
-      <div className="border-b border-gray-200 p-4 dark:border-gray-700">
-        <h2 className="text-sm font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">
+    <aside className="flex w-60 flex-col border-r border-gray-200 bg-white lg:w-72 dark:border-gray-700 dark:bg-gray-900">
+      <div className="border-b border-gray-200 p-3 lg:p-4 dark:border-gray-700">
+        <h2 className="text-xs font-semibold uppercase tracking-wider text-gray-500 lg:text-sm dark:text-gray-400">
           Courses
         </h2>
       </div>

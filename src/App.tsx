@@ -25,7 +25,7 @@ function LayoutSwitcher({
     return (
       <>
         {sidebar}
-        <main className="flex-1 overflow-y-auto bg-gray-50 p-6 dark:bg-gray-800">
+        <main className="flex-1 overflow-y-auto bg-gray-50 p-4 sm:p-6 dark:bg-gray-800">
           {children}
         </main>
       </>
@@ -35,7 +35,7 @@ function LayoutSwitcher({
   if (position === "bottom") {
     return (
       <>
-        <main className="flex-1 overflow-y-auto bg-gray-50 p-6 dark:bg-gray-800">
+        <main className="flex-1 overflow-y-auto bg-gray-50 p-4 sm:p-6 dark:bg-gray-800">
           {children}
         </main>
         {sidebar}
@@ -47,7 +47,7 @@ function LayoutSwitcher({
   return (
     <div className="flex flex-1 overflow-hidden">
       {position === "left" && sidebar}
-      <main className="flex-1 overflow-y-auto bg-gray-50 p-6 dark:bg-gray-800">
+      <main className="flex-1 overflow-y-auto bg-gray-50 p-4 sm:p-6 dark:bg-gray-800">
         {children}
       </main>
       {position === "right" && sidebar}
@@ -108,12 +108,12 @@ export default function App() {
         position={sidebarPosition}
         sidebar={<Sidebar position={sidebarPosition} />}
       >
-        {selectedCourseId ? (
-          <div className="flex h-full gap-6">
-            <div className="w-96 shrink-0 overflow-y-auto">
+          {selectedCourseId ? (
+          <div className="flex h-full gap-4 lg:gap-6">
+            <div className="w-full shrink-0 overflow-y-auto md:w-80 xl:w-96">
               <StudentRoster courseId={selectedCourseId} />
             </div>
-            <div className="flex-1 overflow-y-auto">
+            <div className="flex-1 overflow-y-auto min-w-0">
               <SeatingGrid courseId={selectedCourseId} />
             </div>
           </div>

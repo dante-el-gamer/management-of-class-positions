@@ -1,4 +1,4 @@
-# Design: Classroom Seating Manager
+# Design: ClassDeck
 
 ## Technical Approach
 

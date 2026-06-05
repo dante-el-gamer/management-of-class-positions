@@ -1,12 +1,12 @@
 [package]
-name = "classroom-seating-manager"
+name = "classdeck"
 version = "0.1.0"
-description = "Classroom Seating Manager - desktop app to visually manage classroom seating"
+description = "ClassDeck - desktop app to visually manage classroom seating"
 authors = ["you"]
 edition = "2021"
 
 [lib]
-name = "classroom_seating_manager_lib"
+name = "classdeck_lib"
 crate-type = ["staticlib", "cdylib", "rlib"]
 
 [build-dependencies]

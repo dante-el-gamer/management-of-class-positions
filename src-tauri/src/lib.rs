@@ -7,15 +7,26 @@ pub mod models;
 use auth::{AuthConfig, OAuthFlowState};
 use db::DbState;
 use std::fs;
-use tauri::Manager;
+use tauri::{LogicalSize, Manager};
 
 /// Application entry point — configures Tauri and registers all commands.
 ///
 /// Phase 1 sets up SQLite storage and CRUD commands without a frontend.
 /// The frontend (Vite + React) will be added in Phase 2.
-    #[cfg_attr(mobile, tauri::mobile_entry_point)]
-    pub fn run() {
-        tauri::Builder::default()
+#[cfg_attr(mobile, tauri::mobile_entry_point)]
+pub fn run() {
+    // Linux (WebKitGTK) workaround: disable GPU compositing to avoid
+    // "Could not create default EGL display: EGL_BAD_PARAMETER" on
+    // systems without working EGL/GPU acceleration (e.g. Wayland, VMs,
+    // certain GPU drivers). Forces WebKit to use CPU rendering instead.
+    #[cfg(target_os = "linux")]
+    {
+        if std::env::var("WEBKIT_DISABLE_COMPOSITING_MODE").is_err() {
+            std::env::set_var("WEBKIT_DISABLE_COMPOSITING_MODE", "1");
+        }
+    }
+
+    tauri::Builder::default()
             .setup(|app| {
                 // Resolve the app data directory for the SQLite database file
                 let app_data_dir = app
@@ -37,6 +48,25 @@ use tauri::Manager;
                     scope: "https://www.googleapis.com/auth/drive.file".to_string(),
                 });
                 app.manage(OAuthFlowState::new());
+
+                // Dynamic window sizing: fit to ~80 % of the active monitor,
+                // respecting OS-level DPI scaling (Wayland, X11, Windows).
+                // Falls back gracefully if monitor info is unavailable.
+                if let Some(window) = app.get_webview_window("main") {
+                    if let Ok(Some(monitor)) = window.current_monitor() {
+                        let physical = monitor.size();
+                        let scale = monitor.scale_factor();
+                        let logical_w = physical.width as f64 / scale;
+                        let logical_h = physical.height as f64 / scale;
+
+                        let target_w = (logical_w * 0.80).round().max(900.0);
+                        let target_h = (logical_h * 0.80).round().max(600.0);
+
+                        let _ = window.set_size(LogicalSize::new(target_w, target_h));
+                        let _ = window.center();
+                        let _ = window.set_min_size(Some(LogicalSize::new(900.0, 600.0)));
+                    }
+                }
 
                 Ok(())
             })

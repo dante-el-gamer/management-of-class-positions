@@ -1,4 +1,4 @@
-# Tasks: Classroom Seating Manager
+# Tasks: ClassDeck
 
 ## Review Workload Forecast
 

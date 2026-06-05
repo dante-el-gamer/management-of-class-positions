@@ -1,4 +1,4 @@
-# Proposal: Classroom Seating Manager
+# Proposal: ClassDeck
 
 ## Intent
 
